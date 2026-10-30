@@ -1,6 +1,42 @@
-// Gli elementi rimangono leggibili anche quando lo script o le animazioni non sono disponibili.
-const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
-if(!reduced.matches&&'IntersectionObserver' in window){
- const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;const el=entry.target;const picture=el.tagName==='IMG';const heading=/^H[2-4]$/.test(el.tagName);el.animate(picture?[{transform:'scale(1.035)'},{transform:'scale(1)'}]:heading?[{transform:'translateX(-14px)',opacity:.7},{transform:'translateX(0)',opacity:1}]:[{transform:'translateY(22px)',opacity:.65},{transform:'translateY(0)',opacity:1}],{duration:picture?1000:650,delay:(Number(el.dataset.stagger)||0)*65,easing:'cubic-bezier(.16,1,.3,1)'});observer.unobserve(el)}),{threshold:.15});
- document.querySelectorAll('main section:not(.hero)').forEach(section=>section.querySelectorAll('h2,h3,h4,p,figure img,.dish,.button').forEach((el,index)=>{el.dataset.stagger=index%4;observer.observe(el)}));
+// Una sola entrata per gruppo: niente animazioni annidate sui testi o sulle foto.
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+if (!motionPreference.matches && 'IntersectionObserver' in window && 'animate' in Element.prototype) {
+  const pending = new Set();
+  const playing = new Set();
+  const observer = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      const element = entry.target;
+      observer.unobserve(element);
+      pending.delete(element);
+      element.classList.remove('motion-pending');
+      const animation = element.animate(
+        [{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }],
+        { duration: 520, easing: 'cubic-bezier(.22,.61,.36,1)' }
+      );
+      playing.add(animation);
+      const release = () => playing.delete(animation);
+      animation.finished.then(release, release);
+    }
+  }, { threshold: 0, rootMargin: '0px 0px -24px 0px' });
+
+  // Gli elementi già visibili al caricamento restano fermi, anche entrando da un'ancora.
+  const viewportHeight = window.innerHeight;
+  const targets = [...document.querySelectorAll('.section-top, .room-copy, .menu-heading, .hours-heading, .hours-list article')]
+    .filter(element => element.getBoundingClientRect().top >= viewportHeight);
+  for (const element of targets) {
+    pending.add(element);
+    element.classList.add('motion-pending');
+    observer.observe(element);
+  }
+
+  motionPreference.addEventListener('change', event => {
+    if (!event.matches) return;
+    observer.disconnect();
+    pending.forEach(element => element.classList.remove('motion-pending'));
+    pending.clear();
+    playing.forEach(animation => animation.cancel());
+    playing.clear();
+  });
 }

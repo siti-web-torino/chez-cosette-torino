@@ -10,14 +10,12 @@
 :root{--title:clamp(64px,5.7vw,82px)}
 @media(max-width:600px){:root{--title:52px}}
 
-/* Movimento: la carta entra, la fotografia respira. */
+/* Movimento discreto: fotografie ferme e una sola entrata per l'invito. */
 @media(prefers-reduced-motion:no-preference){
-.hero-photo{animation:facade-drift 24s ease-in-out infinite alternate}
-@keyframes facade-drift{from{transform:scale(1)}to{transform:scale(1.045)}}
-.invitation{animation:invitation-arrive .9s var(--ease) both}
-@keyframes invitation-arrive{from{transform:translateY(25px)}to{transform:translateY(0)}}
+.invitation{animation:invitation-arrive .65s cubic-bezier(.22,.61,.36,1) both}
+@keyframes invitation-arrive{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
 .button:hover{transform:translateY(-3px)}
-.text-link:hover,nav a:hover{transform:translateY(-2px)}
+.text-link:hover{transform:translateY(-2px)}
 }
 
 /* Orari ridisposti dopo le modifiche richieste dall’utente. */
