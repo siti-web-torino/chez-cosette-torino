@@ -6,7 +6,7 @@ Il progetto riprende il rosso della facciata, il blu fiordaliso del marchio, le 
 
 ## Anteprima locale
 
-Richiede Node.js 18 o successivo. Non servono dipendenze da installare.
+Richiede Node.js 24. Non servono dipendenze da installare.
 
 ```sh
 npm start
@@ -19,6 +19,12 @@ npm run check
 ```
 
 Controlla la sintassi dei file JavaScript. Le verifiche di impaginazione e interazione vanno effettuate nel browser.
+
+## Pubblicazione su Vercel
+
+Il file `vercel.json` imposta il progetto come sito statico (`framework: null`), esegue `npm run build` e pubblica solo la cartella `dist/`. `build.mjs` copia la pagina e gli asset effettivamente usati; il server per l’anteprima e gli appunti interni non vengono pubblicati.
+
+Non scegliere il preset Node.js: `server.mjs` serve esclusivamente per l’anteprima locale. La cartella principale del progetto Vercel è la radice del repository.
 
 ## Contenuti provvisori
 
