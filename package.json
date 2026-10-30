@@ -1,0 +1,9 @@
+{
+  "name": "chez-cosette-torino",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Proposta indipendente di sito vetrina per Chez Cosette, Torino",
+  "scripts": {"start":"node server.mjs","check":"node --check site.js && node --check interactions.js && node --check server.mjs"},
+  "engines": {"node": ">=18"}
+}

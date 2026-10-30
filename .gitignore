@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.*
+.taste-skill/
+NOTE-PROGETTO.md
+assets/facciata.png
+assets/facciata-ia-provvisoria.png
+assets/montmartre.png
+assets/sala.png
+assets/facciata-senza-auto.png
+assets/sala-ritoccata.png
+assets/croque-placeholder.png
+assets/flan-placeholder.png
+*.log
