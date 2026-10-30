@@ -16,3 +16,22 @@ footer{background:var(--red);color:var(--paper);padding-top:58px}.footer-brand{p
 @media(max-width:600px){html{scroll-padding-top:128px}.header{min-height:110px;padding:16px var(--gutter);gap:8px}.hero{min-height:920px}.invitation{padding-top:52px}.awning{height:25px}.awning i{height:31px}.doorplate{width:104px;right:15px;bottom:18px;padding:10px}.doorplate strong{font-size:54px}.doorplate span{font-size:14px}.bistrot{margin-top:18px}.room-photo{padding:10px}.french-signature{font-size:25px}.menu-category{font-size:40px;margin-bottom:22px}.photo-open img{aspect-ratio:4/3}.photo-action{font-size:14px;padding:7px 12px;bottom:10px;right:10px}.hours-list .time{font-size:31px}.footer-brand{gap:0;margin:30px 0}.footer-brand .flower-crop{display:none}.footer-name{font-size:15vw}.photo-dialog{padding:15px}.photo-dialog>p{font-size:16px}}
 @media(prefers-reduced-motion:no-preference){.motion-pending{opacity:0;transform:translateY(12px)}}
 @media(prefers-reduced-motion:reduce){.motion-pending{opacity:1;transform:none}}
+
+/* Il nome come un piccolo racconto su due pagine, senza movimenti aggiuntivi. */
+.name-section{color:var(--red)}
+.name-pages{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);max-width:1320px;margin:0 auto;border-top:1px solid var(--red);border-bottom:1px solid var(--red)}
+.name-meaning,.name-story{padding:52px clamp(28px,4vw,72px)}
+.name-meaning{padding-left:0;display:flex;flex-direction:column;align-items:start}
+.name-story{border-left:1px solid var(--red);padding-right:0}
+.name-kicker{font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:28px}
+.name-meaning h2{font-size:clamp(60px,6.4vw,92px);line-height:1.05;margin-bottom:28px}
+.name-definition{max-width:33ch;font-size:21px;line-height:1.6;color:var(--ink)}
+.name-definition span{font-style:italic}
+.name-invitation{font:italic 500 26px/1.3 var(--display);margin-top:auto;padding-top:36px}
+.name-story h3{font-size:clamp(30px,3vw,42px);margin-bottom:26px}
+.name-story>p:not(.name-kicker){max-width:43ch;color:var(--ink)}
+.name-story>p+p{margin-top:20px}
+.name-story strong{font-weight:500}
+.name-story .name-ending{font:italic 500 25px/1.4 var(--display);padding-top:12px}
+@media(max-width:700px){.name-pages{display:block}.name-meaning,.name-story{padding:34px 0}.name-story{border-left:0;border-top:1px solid var(--red)}.name-kicker{font-size:12px;margin-bottom:24px}.name-meaning h2{font-size:clamp(50px,10vw,68px);margin-bottom:24px}.name-definition{font-size:19px;max-width:38ch}.name-invitation{font-size:23px;padding-top:24px}.name-story h3{font-size:32px}.name-story .name-ending{font-size:23px}}
+@media(max-width:600px){.header nav{gap:clamp(8px,2.5vw,14px);font-size:14px}}
