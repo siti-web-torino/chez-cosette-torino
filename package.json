@@ -3,7 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Proposta indipendente di sito vetrina per Chez Cosette, Torino",
-  "scripts": {"start":"node server.mjs","build":"node build.mjs","check":"node --check site.js && node --check interactions.js && node --check server.mjs && node --check build.mjs"},
-  "engines": {"node": "24.x"}
+  "description": "Chez Cosette — Café Bistrot & Salon Littéraire, Torino",
+  "scripts": {
+    "start": "node server.mjs",
+    "build": "node build.mjs",
+    "check": "node --check site.js && node --check interactions.js && node --check server.mjs && node --check build.mjs"
+  },
+  "engines": {
+    "node": "24.x"
+  }
 }

@@ -1,26 +1,40 @@
-const photoDialog=document.querySelector('.photo-dialog');
-const largePhoto=document.querySelector('#photo-large');
-const photoMotionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
-let dialogAnimation;
-let previousOverflow='';
-document.querySelectorAll('.photo-open').forEach(button=>button.addEventListener('click',()=>{
- const source=button.querySelector('img');
- largePhoto.src=source.getAttribute('src');
- largePhoto.alt=source.alt;
- largePhoto.width=source.naturalWidth||source.width;
- largePhoto.height=source.naturalHeight||source.height;
- document.querySelector('#photo-title').textContent=button.dataset.photoTitle;
- previousOverflow=document.body.style.overflow;
- document.body.style.overflow='hidden';
- photoDialog.showModal();
- if(!photoMotionPreference.matches)dialogAnimation=photoDialog.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'cubic-bezier(.22,.61,.36,1)'});
-}));
-document.querySelector('.dialog-close').addEventListener('click',()=>photoDialog.close());
-photoDialog.addEventListener('click',event=>{if(event.target===photoDialog){const r=photoDialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)photoDialog.close();}});
-photoDialog.addEventListener('close',()=>{dialogAnimation?.cancel();document.body.style.overflow=previousOverflow;});
-photoMotionPreference.addEventListener('change',event=>{if(event.matches)dialogAnimation?.cancel();});
-if('IntersectionObserver' in window){
- const links=[...document.querySelectorAll('nav a')];
- const navigation=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;links.forEach(link=>{if(link.getAttribute('href')==='#'+entry.target.id)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});}),{rootMargin:'-18% 0px -58% 0px'});
- document.querySelectorAll('main section[id]').forEach(section=>navigation.observe(section));
+const navigation = document.querySelector('#main-nav');
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = [...navigation.querySelectorAll('a')];
+const mobileNavigation = window.matchMedia('(max-width: 820px)');
+
+function closeNavigation({restoreFocus = false} = {}) {
+  const wasOpen = navToggle.getAttribute('aria-expanded') === 'true';
+  navToggle.setAttribute('aria-expanded', 'false');
+  navigation.classList.remove('is-open');
+  if (restoreFocus && wasOpen) navToggle.focus();
+}
+navToggle.addEventListener('click', () => {
+  const open = navToggle.getAttribute('aria-expanded') !== 'true';
+  navToggle.setAttribute('aria-expanded', String(open));
+  navigation.classList.toggle('is-open', open);
+});
+navLinks.forEach(link => link.addEventListener('click', () => closeNavigation()));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') closeNavigation({restoreFocus: true});
+});
+document.addEventListener('click', event => {
+  if (!event.target.closest('.header')) closeNavigation();
+});
+document.addEventListener('focusin', event => {
+  if (!event.target.closest('.header')) closeNavigation();
+});
+mobileNavigation.addEventListener('change', () => closeNavigation());
+
+if ('IntersectionObserver' in window) {
+  const sectionStates = new Map();
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => sectionStates.set(entry.target.id, entry.isIntersecting));
+    const activeLink = navLinks.find(link => sectionStates.get(link.hash.slice(1)));
+    navLinks.forEach(link => {
+      if (link === activeLink) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }, {rootMargin: '-16% 0px -62% 0px', threshold: 0});
+  document.querySelectorAll('main section[id]').forEach(section => observer.observe(section));
 }

@@ -1,37 +1,16 @@
-@import url('style.css');
-html{scroll-padding-top:110px;scrollbar-gutter:stable}
-.skip-link{position:fixed;top:10px;left:20px;z-index:20;background:var(--paper);padding:12px 20px;transform:translateY(-160%)}.skip-link:focus{transform:none}
-.header{position:sticky;top:0;z-index:5;min-height:88px;background:var(--paper);padding-top:18px;padding-bottom:18px}
-nav a{position:relative}nav a::after{content:'';position:absolute;bottom:5px;left:0;right:0;height:3px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease)}nav a:hover::after,nav a[aria-current=location]::after{transform:scaleX(1)}
-.hero{min-height:795px}.invitation{padding-top:72px}.brand-crop{mix-blend-mode:multiply}
-.awning{position:absolute;top:0;left:0;right:0;height:30px;display:flex}.awning i{display:block;flex:1;height:38px;background:var(--red);border-radius:0 0 22px 22px}.awning i:nth-child(even){background:var(--paper)}
-.doorplate{position:absolute;right:30px;bottom:30px;width:154px;background:var(--blue);color:var(--paper);padding:16px;text-align:center;border-radius:12px;display:flex;flex-direction:column;gap:2px}.doorplate strong{font:500 78px/1.05 var(--display);letter-spacing:-.06em}.doorplate span{font-size:16px}.doorplate:hover{opacity:1;transform:translateY(-4px)}
-.bistrot{margin-top:28px;background:var(--blue);color:var(--paper)}.room-photo{padding:14px;background:var(--paper);overflow:hidden}.room-photo>img{height:auto}.french-signature{font:italic 500 28px/1.2 var(--display)}.bistrot a:focus-visible{outline-color:var(--paper)}
-.menu-category{margin-bottom:26px;font-size:52px}.photo-open{position:relative;display:block;width:100%;border:0;padding:0;background:var(--pale);overflow:hidden;color:var(--ink)}.photo-open img{aspect-ratio:16/10;width:100%;height:auto;transition:transform .45s cubic-bezier(.22,.61,.36,1)}@media(hover:hover) and (pointer:fine){.photo-open:hover img{transform:scale(1.015)}}.photo-action{position:absolute;bottom:14px;right:14px;padding:8px 14px;background:var(--paper);color:var(--red);font-size:16px}
-.time{font-family:var(--display);font-size:36px;color:var(--blue);font-variant-numeric:lining-nums tabular-nums}
-footer{background:var(--red);color:var(--paper);padding-top:58px}.footer-brand{position:relative;display:flex;align-items:center;gap:30px;margin:34px 0}.footer-name{font-size:clamp(64px,14vw,230px);margin:0}.prototype-note{color:var(--paper);max-width:105ch}.footer-top a:focus-visible{outline-color:var(--paper)}.flower-crop{position:relative;flex:none;width:86px;height:86px;overflow:hidden;background:var(--paper);border-radius:50%}.flower-crop img{position:absolute;width:350px;height:auto;max-width:none;left:-128px;top:-150px}
-.photo-dialog{width:min(94vw,1000px);max-height:94svh;padding:20px;background:var(--paper);color:var(--ink);border:0;overflow:auto}.photo-dialog::backdrop{background:rgb(18 32 35 / .85)}.dialog-close{display:block;margin:0 0 16px auto;min-height:44px;padding:8px 18px;background:var(--red);color:var(--paper);border:0}.photo-dialog>img{height:auto;max-height:68svh;width:100%;object-fit:contain}.photo-dialog>p{margin-top:12px;font-size:18px}.photo-dialog .dialog-note{font-size:14px;max-width:72ch}
-@media(min-width:1500px){.hero{min-height:880px}}
-@media(max-width:1050px){.header-address{display:none}.header{gap:20px}.hero{min-height:790px}.invitation{padding-top:60px}.menu-category{font-size:44px}.time{font-size:29px}.doorplate{width:124px;padding:13px;right:24px;bottom:24px}.doorplate strong{font-size:64px}.footer-brand{gap:20px}.flower-crop{width:64px;height:64px}.flower-crop img{width:260px;left:-95px;top:-111px}.footer-name{font-size:13vw}}
-@media(max-width:600px){html{scroll-padding-top:128px}.header{min-height:110px;padding:16px var(--gutter);gap:8px}.hero{min-height:920px}.invitation{padding-top:52px}.awning{height:25px}.awning i{height:31px}.doorplate{width:104px;right:15px;bottom:18px;padding:10px}.doorplate strong{font-size:54px}.doorplate span{font-size:14px}.bistrot{margin-top:18px}.room-photo{padding:10px}.french-signature{font-size:25px}.menu-category{font-size:40px;margin-bottom:22px}.photo-open img{aspect-ratio:4/3}.photo-action{font-size:14px;padding:7px 12px;bottom:10px;right:10px}.hours-list .time{font-size:31px}.footer-brand{gap:0;margin:30px 0}.footer-brand .flower-crop{display:none}.footer-name{font-size:15vw}.photo-dialog{padding:15px}.photo-dialog>p{font-size:16px}}
-@media(prefers-reduced-motion:no-preference){.motion-pending{opacity:0;transform:translateY(12px)}}
-@media(prefers-reduced-motion:reduce){.motion-pending{opacity:1;transform:none}}
-
-/* Il nome come un piccolo racconto su due pagine, senza movimenti aggiuntivi. */
-.name-section{color:var(--red)}
-.name-pages{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);max-width:1320px;margin:0 auto;border-top:1px solid var(--red);border-bottom:1px solid var(--red)}
-.name-meaning,.name-story{padding:52px clamp(28px,4vw,72px)}
-.name-meaning{padding-left:0;display:flex;flex-direction:column;align-items:start}
-.name-story{border-left:1px solid var(--red);padding-right:0}
-.name-kicker{font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:28px}
-.name-meaning h2{font-size:clamp(60px,6.4vw,92px);line-height:1.05;margin-bottom:28px}
-.name-definition{max-width:33ch;font-size:21px;line-height:1.6;color:var(--ink)}
-.name-definition span{font-style:italic}
-.name-invitation{font:italic 500 26px/1.3 var(--display);margin-top:auto;padding-top:36px}
-.name-story h3{font-size:clamp(30px,3vw,42px);margin-bottom:26px}
-.name-story>p:not(.name-kicker){max-width:43ch;color:var(--ink)}
-.name-story>p+p{margin-top:20px}
-.name-story strong{font-weight:500}
-.name-story .name-ending{font:italic 500 25px/1.4 var(--display);padding-top:12px}
-@media(max-width:700px){.name-pages{display:block}.name-meaning,.name-story{padding:34px 0}.name-story{border-left:0;border-top:1px solid var(--red)}.name-kicker{font-size:12px;margin-bottom:24px}.name-meaning h2{font-size:clamp(50px,10vw,68px);margin-bottom:24px}.name-definition{font-size:19px;max-width:38ch}.name-invitation{font-size:23px;padding-top:24px}.name-story h3{font-size:32px}.name-story .name-ending{font-size:23px}}
-@media(max-width:600px){.header nav{gap:clamp(8px,2.5vw,14px);font-size:14px}}
+/* Les détails: une marquise rayée et des finitions de papier. */
+.awning{position:absolute;inset:0 0 auto;height:27px;display:flex;filter:drop-shadow(0 5px 3px rgb(48 25 17 / .1));border-top:3px solid var(--bordeaux)}
+.awning i{flex:1;display:block;height:27px;border-radius:0 0 48% 48%;background:var(--bordeaux);position:relative}
+.awning i:nth-child(even){background:var(--cream);border-inline:1px solid rgb(197 160 89 / .18)}
+.awning::after{content:'';position:absolute;top:5px;left:0;right:0;height:1px;background:rgb(197 160 89 / .4)}
+.menu-paper::after,.postcard::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.11;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%2381612c' opacity='.2' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E")}
+@media(hover:hover) and (pointer:fine){
+.header nav a:hover::after{transform:scaleX(1)}
+.button:hover{background:var(--blue);border-color:var(--blue);transform:translateY(-2px)}
+.header-reserve:hover{background:var(--bordeaux);border-color:var(--bordeaux);color:var(--paper)}
+.text-link:hover{color:var(--blue)}.evening .text-link:hover{color:#E0C592}
+.doorplate:hover{transform:translateY(-3px)}.reputation:hover{background:var(--cream)}
+.footer-instagram:hover,.footer-bottom>a:hover{color:#E0C592}}
+.button,.header-reserve,.doorplate,.text-link,.reputation,.footer-instagram,.footer-bottom>a{transition:background .22s var(--ease),border-color .22s var(--ease),color .22s var(--ease),transform .22s var(--ease)}
+@media(prefers-reduced-motion:no-preference){.invitation{animation:invitation-arrive .7s var(--ease) both}@keyframes invitation-arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}}
+@media(max-width:600px){.awning{height:22px}.awning i{height:22px}.awning i:nth-child(n+25){display:none}}
