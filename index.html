@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>document.documentElement.classList.add('js');</script>
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#5E161C">
   <meta name="description" content="Chez Cosette, café bistrot francese e piccolo salotto letterario in Via Saluzzo 32, San Salvario, Torino. Colazione parigina, apéro e brunch della domenica.">
@@ -15,6 +16,18 @@
 </head>
 <body id="inizio">
   <a class="skip-link" href="#contenuto">Vai al contenuto</a>
+  <div class="entrance" hidden>
+    <div class="entrance-curtain entrance-left" aria-hidden="true"></div>
+    <div class="entrance-curtain entrance-right" aria-hidden="true"></div>
+    <div class="entrance-brand" aria-hidden="true">
+      <span class="entrance-bonjour" lang="fr">Bienvenue</span>
+      <span class="entrance-name">Chez Cosette</span>
+      <span class="entrance-rule"></span>
+      <span class="entrance-caption" lang="fr">Un petit coin de Paris, à Turin.</span>
+    </div>
+    <button class="entrance-skip" type="button">Passa al bistrot <span aria-hidden="true">↗</span></button>
+  </div>
+  <div class="reading-progress" aria-hidden="true"></div>
   <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
     <symbol id="fleuron" viewBox="0 0 100 32"><g fill="none" stroke="currentColor" stroke-width="1"><path d="M0 16h30c8 0 10-10 3-10-5 0-5 7 0 7h9m58 3H70c-8 0-10-10-3-10 5 0 5 7 0 7h-9M35 23c8 0 12-3 15-7 3 4 7 7 15 7"/><path d="m50 3 5 13-5 12-5-12z"/></g><circle cx="50" cy="16" r="2" fill="currentColor"/></symbol>
     <symbol id="corner" viewBox="0 0 48 48"><path d="M3 45V3h42M9 35V9h26M3 23c17 0 20-3 20-20M9 26c6 0 17-11 17-17" fill="none" stroke="currentColor" stroke-width="1"/><path d="m17 17 3-5 3 5-3 5z" fill="currentColor"/></symbol>
@@ -31,7 +44,7 @@
       <div class="hero-inner wrap">
         <div class="invitation">
           <p class="eyebrow">Café Bistrot &amp; Salon Littéraire</p>
-          <h1 id="titolo">Parigi,<br><em>portami via.</em></h1>
+          <h1 id="titolo"><span class="title-line"><span>Parigi,</span></span><span class="title-line"><em>portami via.</em></span></h1>
           <div class="hero-fleuron" aria-hidden="true"><svg><use href="#fleuron"/></svg></div>
           <p class="hero-lead">Un piccolo angolo di Francia,<br>nel cuore di San Salvario.</p>
           <p class="hero-copy">Il profumo del caffè, un calice di vino, le pagine di un libro. In Via Saluzzo 32, c’è un posto dove il tempo ha un altro sapore.</p>
@@ -40,13 +53,15 @@
           <a class="text-link hero-menu-link" href="#tavola">Un assaggio di Parigi <span aria-hidden="true">↓</span></a>
         </div>
         <div class="hero-scene">
+          <div class="scene-halo" aria-hidden="true"></div>
           <p class="arch-label" lang="fr">Un petit coin de Paris</p>
+          <span class="scene-note" lang="fr" aria-hidden="true">Une adresse. Mille histoires.</span>
           <figure class="arch-frame"><img class="hero-photo" src="assets/facciata-senza-auto.webp" width="1099" height="1431" fetchpriority="high" alt="La facciata rossa di Chez Cosette, le tende a righe e le sedie intrecciate del dehors"></figure>
           <a class="doorplate" href="#visita" aria-label="Vieni a trovarci in Via Saluzzo 32, Torino"><span>Via Saluzzo</span><strong>32</strong><span>Torino</span></a>
           <p class="scene-signature" lang="fr">Entrez, vous êtes chez vous.</p>
         </div>
       </div>
-      <div class="hero-baseline wrap"><span>Cuisine française</span><span aria-hidden="true">✦</span><span>Livres &amp; belles conversations</span><span aria-hidden="true">✦</span><span>San Salvario, Torino</span></div>
+      <div class="hero-baseline wrap"><span>Cuisine française</span><span aria-hidden="true">✦</span><span>Livres &amp; belles conversations</span><span aria-hidden="true">✦</span><span>San Salvario, Torino</span><button class="entrance-replay" type="button" hidden>Rivedi l’apertura <span aria-hidden="true">↺</span></button></div>
     </section>
     <section id="bistrot" class="bistrot section-pad" aria-labelledby="bistrot-title">
       <div class="wrap">

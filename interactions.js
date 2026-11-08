@@ -2,6 +2,8 @@ const navigation = document.querySelector('#main-nav');
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = [...navigation.querySelectorAll('a')];
 const mobileNavigation = window.matchMedia('(max-width: 820px)');
+document.documentElement.classList.add('js');
+document.querySelector('.header').classList.add('navigation-ready');
 
 function closeNavigation({restoreFocus = false} = {}) {
   const wasOpen = navToggle.getAttribute('aria-expanded') === 'true';
@@ -9,12 +11,21 @@ function closeNavigation({restoreFocus = false} = {}) {
   navigation.classList.remove('is-open');
   if (restoreFocus && wasOpen) navToggle.focus();
 }
-navToggle.addEventListener('click', () => {
+navToggle.addEventListener('click', event => {
   const open = navToggle.getAttribute('aria-expanded') !== 'true';
   navToggle.setAttribute('aria-expanded', String(open));
   navigation.classList.toggle('is-open', open);
+  if (open && event.detail === 0) navLinks[0]?.focus();
 });
-navLinks.forEach(link => link.addEventListener('click', () => closeNavigation()));
+navLinks.forEach(link => link.addEventListener('click', () => {
+  const wasOpen = navToggle.getAttribute('aria-expanded') === 'true';
+  closeNavigation();
+  if (wasOpen) {
+    const destination = document.getElementById(link.hash.slice(1));
+    destination?.setAttribute('tabindex', '-1');
+    destination?.focus({preventScroll: true});
+  }
+}));
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') closeNavigation({restoreFocus: true});
 });
